@@ -389,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5270915146742107147, guid: 991e0389b17abe54e93e26483e1efce5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -547,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2020175803236134694, guid: 352434826fe783f418f046df06fa1a90, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4370559013992163894, guid: 352434826fe783f418f046df06fa1a90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -881,7 +881,9 @@ MonoBehaviour:
   - {fileID: 1672939768328876600, guid: 8a00b593958b31c4caf50a7c9a71e291, type: 3}
   - {fileID: 4169140764903324576, guid: fa63e0ce845c33649a59d6e55fdfccc1, type: 3}
   - {fileID: 8508564527802162086, guid: 4e6609c54ebf378429145369bedfbf2a, type: 3}
-  hiddenCard: {fileID: 6125176924999794594, guid: 6113719072acf5d498502daea922f5d1, type: 3}
+  hiddenCard: {fileID: 5124039181820295835, guid: 6113719072acf5d498502daea922f5d1, type: 3}
+  playerHand: {fileID: 1549117141}
+  dealerHand: {fileID: 1884634218}
 --- !u!4 &801144220
 Transform:
   m_ObjectHideFlags: 0
@@ -1652,7 +1654,7 @@ Transform:
   m_GameObject: {fileID: 1549117140}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 782.43335, y: 589.2798, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2308,7 +2310,7 @@ Transform:
   m_GameObject: {fileID: 1884634217}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 782.43335, y: 589.2798, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
