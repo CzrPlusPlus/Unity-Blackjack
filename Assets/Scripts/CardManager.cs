@@ -12,42 +12,57 @@ public class CardManager : MonoBehaviour
     private float rightCardX = 1f;
     private float rightCardY = -3f;
     private float rightCardZ = 0;
-    private Vector3 leftSpawnPos;
-    private Vector3 rightSpawnPos;
-    private Vector3 thirdSpawnPos;
-    private Vector3 fourthSpawnPos;
-    private bool dealer = true; // will deal to the dealer first
+    private bool firstCardsDealt = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        leftSpawnPos = new Vector3(leftCardX, leftCardY, leftCardZ);
-        rightSpawnPos = new Vector3(rightCardX, rightCardY, rightCardZ);
-        thirdSpawnPos = new Vector3(rightCardX + 2f, rightCardY, rightCardZ);  // testing extra card spawns
-        fourthSpawnPos = new Vector3(rightCardX + 3f, rightCardY, rightCardZ);  // testing extra card spawns
-        // SpawnCardPrefab(leftSpawnPos, 0);
-        // SpawnCardPrefab(rightSpawnPos, 1);
-        SpawnCardPrefab(leftSpawnPos, 0, false);    // player's left card
-        SpawnCardPrefab(rightSpawnPos, 1, false);   // player's right card
-        SpawnExtraCard(thirdSpawnPos, 2, false);    // testing third card spawning
-        SpawnExtraCard(fourthSpawnPos, 3, false);    // testing fourth card spawning
+        DealInitialCards();
     }
 
-    void SpawnCardPrefab(Vector3 spawnPos, int cardIndex, bool dealer)
+    void DealToDealer()
     {
-        //int cardIndex = 0; // ace of clubs
-        //Vector3 spawnPos = new Vector3(cardX, cardY, cardZ);
-        if (cardIndex == -1)
+        if (!firstCardsDealt)
         {
-            // instantiate hidden card
-            return;
+            Vector3 leftCardPos = new Vector3(leftCardX, -leftCardY, leftCardZ);
+            Vector3 rightCardPos = new Vector3(rightCardX, -rightCardY, rightCardZ);
+            SpawnCardPrefab(leftCardPos, 13, false);    // need to replace with random card index
+            SpawnCardPrefab(rightCardPos, -1, false);  // need to replace with random card index
         }
-        Instantiate(cardPrefabs[cardIndex], spawnPos, Quaternion.identity, playerHand);
     }
 
-    void SpawnExtraCard(Vector3 spawnPos, int cardIndex, bool dealer)
+    void DealToPlayer()
     {
-        Instantiate(cardPrefabs[cardIndex], spawnPos, Quaternion.identity, playerHand);
-        playerHand.position += new Vector3(-1f, 0f, 0f);
+        if (!firstCardsDealt)
+        {
+            Vector3 leftCardPos = new Vector3(leftCardX, leftCardY, leftCardZ);
+            Vector3 rightCardPos = new Vector3(rightCardX, rightCardY, rightCardZ);
+            SpawnCardPrefab(leftCardPos, 0, true);    // need to replace with random card index
+            SpawnCardPrefab(rightCardPos, 12, true);  // need to replace with random card index
+            firstCardsDealt = true;
+        }
+    }
+
+    void DealInitialCards()     // 2 cards to dealer, 2 cards to player. 1 card is face down for the dealer
+    {
+        DealToDealer();
+        DealToPlayer();
+    }
+
+    void SpawnCardPrefab(Vector3 spawnPos, int cardIndex, bool playerCards)
+    {
+        if (playerCards)
+        {
+            Instantiate(cardPrefabs[cardIndex], spawnPos, Quaternion.identity, playerHand);
+        }
+        else
+        {
+            if (cardIndex == -1)
+            {
+                Instantiate(hiddenCard, spawnPos, Quaternion.identity, dealerHand);
+                return;
+            }
+            Instantiate(cardPrefabs[cardIndex], spawnPos, Quaternion.identity, dealerHand);
+        }
     }
 }
