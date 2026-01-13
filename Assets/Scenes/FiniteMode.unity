@@ -556,6 +556,207 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &787138095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787138096}
+  - component: {fileID: 787138097}
+  m_Layer: 0
+  m_Name: CardPrefabDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &787138096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787138095}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.96973, y: -0.24087, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &787138097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787138095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941f0748a7ce6ac4fb574417d45ffa55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardPrefabDatabase
+  cardPrefabs:
+  - Suit: 2
+    Rank: 11
+    Prefab: {fileID: 8007139749114587205, guid: dedddb20290764f4ab250d479a155929, type: 3}
+  - Suit: 2
+    Rank: 12
+    Prefab: {fileID: 5746064776703673341, guid: 724566aeced62a44cb83560cf2a0c9db, type: 3}
+  - Suit: 2
+    Rank: 13
+    Prefab: {fileID: 3696950144194532028, guid: 036af5a60f8bdbd47b92b9f3c6c19317, type: 3}
+  - Suit: 2
+    Rank: 14
+    Prefab: {fileID: 2340256111681941212, guid: 4e8ac9e3eefa645499bf5fb44a4e3872, type: 3}
+  - Suit: 2
+    Rank: 15
+    Prefab: {fileID: 3347712675744066421, guid: 5b0a40e361645d4459c4a39d25c0c8a0, type: 3}
+  - Suit: 2
+    Rank: 16
+    Prefab: {fileID: 1029376588634125091, guid: 6203a7f52c0e5a34ca3125945f737348, type: 3}
+  - Suit: 2
+    Rank: 17
+    Prefab: {fileID: 5002307559360079139, guid: 4e3648fef2f95af4f970ca5690e58b91, type: 3}
+  - Suit: 2
+    Rank: 18
+    Prefab: {fileID: 8212518047506297179, guid: a63256b0f4edf8549940019b4a9cece5, type: 3}
+  - Suit: 2
+    Rank: 19
+    Prefab: {fileID: 2020175803236134694, guid: 352434826fe783f418f046df06fa1a90, type: 3}
+  - Suit: 2
+    Rank: 20
+    Prefab: {fileID: 5270915146742107147, guid: 991e0389b17abe54e93e26483e1efce5, type: 3}
+  - Suit: 2
+    Rank: 21
+    Prefab: {fileID: 2695049706478955344, guid: 1a6f2c1e9c7f00c45b4eccde83c2bca5, type: 3}
+  - Suit: 2
+    Rank: 22
+    Prefab: {fileID: 7734603371916083205, guid: b3d488ca91e0ba945a48d956f3c4a534, type: 3}
+  - Suit: 2
+    Rank: 23
+    Prefab: {fileID: 5105644002358383278, guid: 6e5eb6f7be0b68b4f80860ef783288a5, type: 3}
+  - Suit: 1
+    Rank: 11
+    Prefab: {fileID: 4373867973903252909, guid: e1b2b74004cbd434b92423c0c407126e, type: 3}
+  - Suit: 1
+    Rank: 12
+    Prefab: {fileID: 1484138377976854914, guid: 65a37c80161b04e42b69c6e40bd306ac, type: 3}
+  - Suit: 1
+    Rank: 13
+    Prefab: {fileID: 1313153213754403740, guid: 2875c40fe3a23924e9eeecc8d2f2dd74, type: 3}
+  - Suit: 1
+    Rank: 14
+    Prefab: {fileID: 5166136604572962720, guid: ec9b7ac13fa781741bdad41b4275924b, type: 3}
+  - Suit: 1
+    Rank: 15
+    Prefab: {fileID: 8806722006627884063, guid: fb74a38237dc08d4d9139d318414ff0e, type: 3}
+  - Suit: 1
+    Rank: 16
+    Prefab: {fileID: 4084408977360398044, guid: e37d0ce946376da4d941a6d2f9811d6b, type: 3}
+  - Suit: 1
+    Rank: 17
+    Prefab: {fileID: 5104867669229827409, guid: ac8de557e42e73a41b821f45fb48dd42, type: 3}
+  - Suit: 1
+    Rank: 18
+    Prefab: {fileID: 6824856686396096209, guid: 4e7913d56b1923944977a6cc75b8522d, type: 3}
+  - Suit: 1
+    Rank: 19
+    Prefab: {fileID: 7516775790324393153, guid: fc7bebcd063645743b8f6f5b43faab2e, type: 3}
+  - Suit: 1
+    Rank: 20
+    Prefab: {fileID: 4276952550062300316, guid: 09c70d3a052145940b4cfbdc5079a63e, type: 3}
+  - Suit: 1
+    Rank: 21
+    Prefab: {fileID: 2125231782106456695, guid: d97cdaeb1f287504aa1a20d584e42843, type: 3}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
+  - Suit: 0
+    Rank: 0
+    Prefab: {fileID: 0}
 --- !u!1 &791792920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,3 +2564,4 @@ SceneRoots:
   - {fileID: 1884634218}
   - {fileID: 1549117141}
   - {fileID: 801144220}
+  - {fileID: 787138096}
