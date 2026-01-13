@@ -754,9 +754,9 @@ MonoBehaviour:
   - Suit: 0
     Rank: 0
     Prefab: {fileID: 0}
-  - Suit: 0
-    Rank: 0
-    Prefab: {fileID: 0}
+  - Suit: 3
+    Rank: 23
+    Prefab: {fileID: 8508564527802162086, guid: 4e6609c54ebf378429145369bedfbf2a, type: 3}
 --- !u!1 &791792920
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,82 +899,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 801144220}
-  - component: {fileID: 801144219}
   m_Layer: 0
   m_Name: CardManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &801144219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801144218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c52e58034e847747a95fc47eee16f32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardManager
-  cardPrefabs:
-  - {fileID: 8007139749114587205, guid: dedddb20290764f4ab250d479a155929, type: 3}
-  - {fileID: 5746064776703673341, guid: 724566aeced62a44cb83560cf2a0c9db, type: 3}
-  - {fileID: 3696950144194532028, guid: 036af5a60f8bdbd47b92b9f3c6c19317, type: 3}
-  - {fileID: 2340256111681941212, guid: 4e8ac9e3eefa645499bf5fb44a4e3872, type: 3}
-  - {fileID: 3347712675744066421, guid: 5b0a40e361645d4459c4a39d25c0c8a0, type: 3}
-  - {fileID: 1029376588634125091, guid: 6203a7f52c0e5a34ca3125945f737348, type: 3}
-  - {fileID: 5002307559360079139, guid: 4e3648fef2f95af4f970ca5690e58b91, type: 3}
-  - {fileID: 8212518047506297179, guid: a63256b0f4edf8549940019b4a9cece5, type: 3}
-  - {fileID: 2020175803236134694, guid: 352434826fe783f418f046df06fa1a90, type: 3}
-  - {fileID: 5270915146742107147, guid: 991e0389b17abe54e93e26483e1efce5, type: 3}
-  - {fileID: 2695049706478955344, guid: 1a6f2c1e9c7f00c45b4eccde83c2bca5, type: 3}
-  - {fileID: 7734603371916083205, guid: b3d488ca91e0ba945a48d956f3c4a534, type: 3}
-  - {fileID: 5105644002358383278, guid: 6e5eb6f7be0b68b4f80860ef783288a5, type: 3}
-  - {fileID: 4373867973903252909, guid: e1b2b74004cbd434b92423c0c407126e, type: 3}
-  - {fileID: 1484138377976854914, guid: 65a37c80161b04e42b69c6e40bd306ac, type: 3}
-  - {fileID: 1313153213754403740, guid: 2875c40fe3a23924e9eeecc8d2f2dd74, type: 3}
-  - {fileID: 5166136604572962720, guid: ec9b7ac13fa781741bdad41b4275924b, type: 3}
-  - {fileID: 8806722006627884063, guid: fb74a38237dc08d4d9139d318414ff0e, type: 3}
-  - {fileID: 4084408977360398044, guid: e37d0ce946376da4d941a6d2f9811d6b, type: 3}
-  - {fileID: 5104867669229827409, guid: ac8de557e42e73a41b821f45fb48dd42, type: 3}
-  - {fileID: 6824856686396096209, guid: 4e7913d56b1923944977a6cc75b8522d, type: 3}
-  - {fileID: 7516775790324393153, guid: fc7bebcd063645743b8f6f5b43faab2e, type: 3}
-  - {fileID: 4276952550062300316, guid: 09c70d3a052145940b4cfbdc5079a63e, type: 3}
-  - {fileID: 2125231782106456695, guid: d97cdaeb1f287504aa1a20d584e42843, type: 3}
-  - {fileID: 8138099661673414499, guid: fa81c340c5d552145b13f42fceb4d39f, type: 3}
-  - {fileID: 649052127513749860, guid: 71d42fc1e88293240b6eca8757095e95, type: 3}
-  - {fileID: 8172015070920116046, guid: 7e7e99d66ec5ea74cb03de0967d6edd1, type: 3}
-  - {fileID: 2541470355773081098, guid: 9797ab51af531734abac65a5d53d0a3f, type: 3}
-  - {fileID: 2541470355773081098, guid: 827713adfab53c54ca44666f64eaaa44, type: 3}
-  - {fileID: 2541470355773081098, guid: 84096b0c001c2c043a9be0fa9f1e3682, type: 3}
-  - {fileID: 2541470355773081098, guid: 74382864535efc247b654719c3bc19ce, type: 3}
-  - {fileID: 2541470355773081098, guid: f96dd273c8b000f498121bb5c41d80eb, type: 3}
-  - {fileID: 2541470355773081098, guid: 7fdfcd12472330340a362a5fc16f352d, type: 3}
-  - {fileID: 2541470355773081098, guid: 487a529de6ddc224c8614ae23a33c02d, type: 3}
-  - {fileID: 2541470355773081098, guid: f51166502a3f02046ac9536a489eeb7f, type: 3}
-  - {fileID: 2541470355773081098, guid: 7f7321bbd4c1a2748af85cb466ea9fb7, type: 3}
-  - {fileID: 591865555038378390, guid: 25ba8541feacafb4cbd09811d3bdb689, type: 3}
-  - {fileID: 7677844680332615736, guid: 8b0ca56a74353164eadccccfd5b4145b, type: 3}
-  - {fileID: 8510457441784036385, guid: 031cf46456abde04bade017d21b49cef, type: 3}
-  - {fileID: 6734205462774216319, guid: a095b1f6e8c6acb46871bb64c9bc0169, type: 3}
-  - {fileID: 6274992930111158579, guid: ef9c8118d469c1e489bd94e5aa64bec3, type: 3}
-  - {fileID: 8366491466465658679, guid: 87304be7e1ffdaf42bd2a2990c2c05d8, type: 3}
-  - {fileID: 6678698511190048546, guid: ff7bc0ab752b1c445a2d27336fff3ec8, type: 3}
-  - {fileID: 7510474600653225571, guid: 24bb695abd07eb549895436713ab48a9, type: 3}
-  - {fileID: 5300171050514760905, guid: 040d89b290bd3d14b82f7ffac37a77e4, type: 3}
-  - {fileID: 1989856591304367347, guid: 73be768d4db5ccd4eae3fda65ccc6b0f, type: 3}
-  - {fileID: 151594960596229383, guid: 6ef2c771c751c024a9b1b2289ea917c7, type: 3}
-  - {fileID: 2781938517617518844, guid: ff5b0bb93b150734e8d11475a34d4d37, type: 3}
-  - {fileID: 1361438511066823514, guid: 0d4b2d1cac489fc459fa159184ba775b, type: 3}
-  - {fileID: 1672939768328876600, guid: 8a00b593958b31c4caf50a7c9a71e291, type: 3}
-  - {fileID: 4169140764903324576, guid: fa63e0ce845c33649a59d6e55fdfccc1, type: 3}
-  - {fileID: 8508564527802162086, guid: 4e6609c54ebf378429145369bedfbf2a, type: 3}
-  hiddenCard: {fileID: 5124039181820295835, guid: 6113719072acf5d498502daea922f5d1, type: 3}
-  playerHand: {fileID: 1549117141}
-  dealerHand: {fileID: 1884634218}
+  m_IsActive: 0
 --- !u!4 &801144220
 Transform:
   m_ObjectHideFlags: 0
@@ -1715,7 +1646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d51ed596ab25a543901ae2e0f05fe55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  cardManager: {fileID: 801144219}
+  cardManager: {fileID: 0}
 --- !u!1 &1584697057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,6 +2193,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788093445}
   m_CullTransparentMesh: 1
+--- !u!1 &1866694810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1866694811}
+  m_Layer: 0
+  m_Name: finite-mode-gameobject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1866694811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866694810}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.96973, y: -0.24087, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1884634217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,3 +2527,4 @@ SceneRoots:
   - {fileID: 1549117141}
   - {fileID: 801144220}
   - {fileID: 787138096}
+  - {fileID: 1866694811}
