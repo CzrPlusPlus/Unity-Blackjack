@@ -1,17 +1,18 @@
 using UnityEngine;
 
+/* THIS SCRIPT IS NO LONGER NEEDED. USE IT AS A REFERENCE TO MAKE THE ACTUAL SCRIPT GameManger.cs  */
 public class CardManager : MonoBehaviour
 {
-    [SerializeField] private GameObject hiddenCard;
-    [SerializeField] private Transform playerHand;
-    [SerializeField] private Transform dealerHand;
-    private float leftCardX = -1f;
-    private float leftCardY = -3f;
-    private float leftCardZ = 0;
-    private float rightCardX = 1f;
-    private float rightCardY = -3f;
-    private float rightCardZ = 0;
-    private bool firstCardsDealt = false;
+    // [SerializeField] private GameObject hiddenCard;
+    // [SerializeField] private Transform playerHand;
+    // [SerializeField] private Transform dealerHand;
+    // private float leftCardX = -1f;
+    // private float leftCardY = -3f;
+    // private float leftCardZ = 0;
+    // private float rightCardX = 1f;
+    // private float rightCardY = -3f;
+    // private float rightCardZ = 0;
+    // private bool firstCardsDealt = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
