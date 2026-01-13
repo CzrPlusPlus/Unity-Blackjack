@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class Dealer : Agent
 {
+    private float leftCardX = -1f;
+    private float leftCardY = 3f;
+    private float leftCardZ = 0;
+    private float rightCardX = 1f;
+    private float rightCardY = 3f;
+    private float rightCardZ = 0;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

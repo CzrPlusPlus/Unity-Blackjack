@@ -4,9 +4,7 @@ using System;
 
 public abstract class Agent : MonoBehaviour
 {
-    protected List<String> currentHand;
-    protected int currentTotal;
-    protected float rightCardXPos;
+    protected Hand currentHand;
     protected abstract void Hit();
     protected abstract void Stand();
 }
