@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Player : Agent
 {
-    // [SerializeField] private CardManager cardManager;
     private float leftCardX = -1f;
     private float leftCardY = -3f;
     private float leftCardZ = 0;
@@ -19,7 +18,8 @@ public class Player : Agent
 
     protected override void Hit()
     {
-        Debug.Log("I am the player and I want to hit!");
+        //Debug.Log("I am the player and I want to hit!");
+        Debug.Log("I am the player and this is how many cards I have currently: " + currentHand.CardCount);
     }
 
     protected override void Stand()

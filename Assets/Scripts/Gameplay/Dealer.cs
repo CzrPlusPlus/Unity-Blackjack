@@ -17,7 +17,8 @@ public class Dealer : Agent
 
     protected override void Hit()
     {
-        Debug.Log("I am the dealer and I want to hit!");
+        //Debug.Log("I am the dealer and I want to hit!");
+        Debug.Log("I am the dealer and this is how many cards I have currently: " + currentHand.CardCount);
     }
 
     protected override void Stand()
@@ -25,12 +26,12 @@ public class Dealer : Agent
         Debug.Log("I am the dealer and I want to stand!");
     }
 
-    public void OnHitButton()
+    public void RequestHit()
     {
         Hit();
     }
 
-    public void OnStandButton()
+    public void RequestStand()
     {
         Stand();
     }

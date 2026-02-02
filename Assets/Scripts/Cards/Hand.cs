@@ -1,16 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+
 
 public class Hand
 {
     public List<Card> Cards = new List<Card>();
 
-    public bool isBust => GetTotal() > 21;
-    public bool isBlackjack => Cards.Count == 2 && GetTotal() == 21;
-    public int Total => GetTotal();
-
     // Methods below 
-    public int GetTotal()
+    private int GetTotal()
     {
         int total = Cards.Sum(card => card.GetBlackjackValue());
         int aces = Cards.Count(card => card.Rank == Rank.Ace);
@@ -23,10 +21,8 @@ public class Hand
         return total;
     }
 
-    public int GetBlackjackValue()
-    {
-        if (Rank == Rank.Ace) return 11;
-        if (Rank >= Rank.Jack) return 10;
-        return (int)Rank;
-    }
+    public bool isBust => GetTotal() > 21;
+    public bool isBlackjack => Cards.Count == 2 && GetTotal() == 21;
+    public int Total => GetTotal();
+    public int CardCount => Cards.Count;
 }
