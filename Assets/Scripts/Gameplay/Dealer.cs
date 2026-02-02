@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Dealer : Agent
 {
+    [SerializeField] private GameObject hiddenCard;
     private float leftCardX = -1f;
     private float leftCardY = 3f;
     private float leftCardZ = 0;
@@ -25,6 +26,7 @@ public class Dealer : Agent
                 Debug.Log("Dealer first card");
                 Vector3 leftCardPos = new Vector3(leftCardX, leftCardY, leftCardZ);
                 currentHand.AddCardToHand(card);
+                SpawnCardPrefab(hiddenCard, leftCardPos);
                 SpawnCardPrefab(newCard, leftCardPos);
                 break;
             case 1:

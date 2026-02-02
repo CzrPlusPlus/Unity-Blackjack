@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject hiddenCard;
     [SerializeField] private Player player;
     [SerializeField] private Dealer dealer;
     private Shoe shoe;
@@ -29,11 +28,51 @@ public class GameManager : MonoBehaviour
         DealInitialCards();
     }
 
+    void CheckGameState()
+    {
+        /* 4 Possible Game States:
+        1. No one has blackjack (Await player action)
+        2. Only dealer has blackjack (dealer wins)
+        3. Only player has blackjack (player wins)
+        4. Both dealer & player have blackjack (tie) 
+        */
+        if (!dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
+        {
+            Debug.Log("Game can continue.");
+        }
+        else if (dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
+        {
+            Debug.Log("Dealer wins. Reveal hidden card.");
+            // reveal hidden card
+        }
+        else if (!dealer.currentHand.isBlackjack && player.currentHand.isBlackjack)
+        {
+            Debug.Log("Player wins. Reveal hidden card.");
+            // reveal hidden card
+        }
+        else
+        {
+            Debug.Log("It's a tie. Reveal hidden card.");
+            // reveal hidden card
+        }
+    }
+
     void DealInitialCards()
     {
         player.OnHitButton(shoe.DealCard());
         dealer.RequestHit(shoe.DealCard());
         player.OnHitButton(shoe.DealCard());
         dealer.RequestHit(shoe.DealCard());
+        CheckGameState();
+    }
+
+    void CheckPlayerAction()
+    {
+        // to do
+    }
+
+    void CheckDealerAction()
+    {
+        // to do
     }
 }
