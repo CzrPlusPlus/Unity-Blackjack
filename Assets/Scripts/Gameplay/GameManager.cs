@@ -72,8 +72,11 @@ public class GameManager : MonoBehaviour
         player.RequestHit(shoe.DealCard());
     }
 
-    void CheckDealerAction()
+    public void CheckDealerAction()
     {
-        // to do
+        if (dealer.ShouldHit)
+        {
+            dealer.RequestHit(shoe.DealCard());
+        }
     }
 }

@@ -11,6 +11,7 @@ public class Dealer : Agent
     private float rightCardX = 1f;
     private float rightCardY = 3f;
     private float rightCardZ = 0;
+    private float rightMostX = 1f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,7 +38,12 @@ public class Dealer : Agent
                 break;
             default:
                 Debug.Log("Getting extra card now");
+                Vector3 newCardPos = new Vector3(rightMostX + 2f, rightCardY, rightCardZ);
                 currentHand.AddCardToHand(card);
+                SpawnCardPrefab(newCard, newCardPos, transform);   // will need to store these prefab references to delete them safely
+                transform.position += new Vector3(-1f, 0f, 0f);
+                rightMostX += 1f;
+                gameManager.CheckDealerAction();
                 break;
         }
     }
@@ -71,4 +77,6 @@ public class Dealer : Agent
             Debug.LogWarning("hiddenPrefab is null, nothing to destroy.");
         }
     }
+
+    public bool ShouldHit => currentHand.Total < 17;
 }

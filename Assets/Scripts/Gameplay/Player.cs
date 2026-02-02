@@ -67,7 +67,7 @@ public class Player : Agent
 
     public void OnStandButton()
     {
-        Stand();
+        gameManager.CheckDealerAction();
     }
 
     public void OnDoubleDownButton()
