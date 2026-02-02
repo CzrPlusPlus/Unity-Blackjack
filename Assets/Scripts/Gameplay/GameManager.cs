@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         3. Only player has blackjack (player wins)
         4. Both dealer & player have blackjack (tie) 
         */
+        Debug.Log("Checking Game State...");
         if (!dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
         {
             Debug.Log("Game can continue.");
@@ -59,16 +60,16 @@ public class GameManager : MonoBehaviour
 
     void DealInitialCards()
     {
-        player.OnHitButton(shoe.DealCard());
+        player.RequestHit(shoe.DealCard());
         dealer.RequestHit(shoe.DealCard());
-        player.OnHitButton(shoe.DealCard());
+        player.RequestHit(shoe.DealCard());
         dealer.RequestHit(shoe.DealCard());
         CheckGameState();
     }
 
-    void CheckPlayerAction()
+    public void RequestDeal()
     {
-        // to do
+        player.RequestHit(shoe.DealCard());
     }
 
     void CheckDealerAction()

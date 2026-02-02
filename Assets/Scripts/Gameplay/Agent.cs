@@ -5,15 +5,16 @@ using System;
 public abstract class Agent : MonoBehaviour
 {
     public Hand currentHand { get; private set; }
+    protected List<GameObject> cardPrefabs;
 
     protected virtual void Awake()
     {
         currentHand = new Hand();
     }
 
-    protected virtual void SpawnCardPrefab(GameObject card, Vector3 spawnPos)
+    protected virtual GameObject SpawnCardPrefab(GameObject card, Vector3 spawnPos, Transform parent)
     {
-        Instantiate(card, spawnPos, Quaternion.identity);
+        return Instantiate(card, spawnPos, Quaternion.identity, parent);
     }
 
     protected abstract void Hit(Card card);

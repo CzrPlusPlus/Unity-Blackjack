@@ -1071,7 +1071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321527db51dc7d94b8fbb2a2750cbbf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  hiddenCard: {fileID: 5124039181820295835, guid: 6113719072acf5d498502daea922f5d1, type: 3}
   player: {fileID: 1549117142}
   dealer: {fileID: 1884634219}
 --- !u!1 &1154448381
@@ -1662,6 +1661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d51ed596ab25a543901ae2e0f05fe55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  gameManager: {fileID: 1020226455}
 --- !u!1 &1584697057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,6 +2252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 717e48193bb9955439d8d1af1035604b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dealer
+  gameManager: {fileID: 1020226455}
   hiddenCard: {fileID: 5124039181820295835, guid: 6113719072acf5d498502daea922f5d1, type: 3}
 --- !u!1 &1996901595
 GameObject:

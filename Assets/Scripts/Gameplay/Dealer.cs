@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Dealer : Agent
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject hiddenCard;
+    private GameObject hiddenPrefab;
     private float leftCardX = -1f;
     private float leftCardY = 3f;
     private float leftCardZ = 0;
@@ -13,7 +15,7 @@ public class Dealer : Agent
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // to do
+       // to do
     }
 
     protected override void Hit(Card card)
@@ -23,17 +25,15 @@ public class Dealer : Agent
         switch (currentHand.CardCount)
         {
             case 0: 
-                Debug.Log("Dealer first card");
-                Vector3 leftCardPos = new Vector3(leftCardX, leftCardY, leftCardZ);
                 currentHand.AddCardToHand(card);
-                SpawnCardPrefab(hiddenCard, leftCardPos);
-                SpawnCardPrefab(newCard, leftCardPos);
+                Vector3 leftCardPos = new Vector3(leftCardX, leftCardY, leftCardZ);
+                hiddenPrefab = SpawnCardPrefab(hiddenCard, leftCardPos, transform);
+                SpawnCardPrefab(newCard, leftCardPos, transform);
                 break;
             case 1:
-                Debug.Log("Dealer second card");
-                Vector3 rightCardPos = new Vector3(rightCardX, rightCardY, rightCardZ);
                 currentHand.AddCardToHand(card);
-                SpawnCardPrefab(newCard, rightCardPos);
+                Vector3 rightCardPos = new Vector3(rightCardX, rightCardY, rightCardZ);
+                SpawnCardPrefab(newCard, rightCardPos, transform);
                 break;
             default:
                 Debug.Log("Getting extra card now");
@@ -55,5 +55,20 @@ public class Dealer : Agent
     public void RequestStand()
     {
         Stand();
+    }
+
+    [ContextMenu("Destroy Hidden Card")]
+    private void TestDestroy()
+    {
+        if (hiddenPrefab != null)
+        {
+            Debug.Log("Destroying hidden card prefab.");
+            Destroy(hiddenPrefab);
+            hiddenPrefab = null; // Clear reference
+        }
+        else
+        {
+            Debug.LogWarning("hiddenPrefab is null, nothing to destroy.");
+        }
     }
 }
