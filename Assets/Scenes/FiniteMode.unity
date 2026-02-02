@@ -680,43 +680,43 @@ MonoBehaviour:
     Rank: 13
     Prefab: {fileID: 649052127513749860, guid: 71d42fc1e88293240b6eca8757095e95, type: 3}
   - Suit: 0
-    Rank: 11
+    Rank: 1
     Prefab: {fileID: 8172015070920116046, guid: 7e7e99d66ec5ea74cb03de0967d6edd1, type: 3}
   - Suit: 0
-    Rank: 12
+    Rank: 2
     Prefab: {fileID: 2541470355773081098, guid: 9797ab51af531734abac65a5d53d0a3f, type: 3}
   - Suit: 0
-    Rank: 13
+    Rank: 3
     Prefab: {fileID: 2541470355773081098, guid: 827713adfab53c54ca44666f64eaaa44, type: 3}
   - Suit: 0
-    Rank: 14
+    Rank: 4
     Prefab: {fileID: 2541470355773081098, guid: 84096b0c001c2c043a9be0fa9f1e3682, type: 3}
   - Suit: 0
-    Rank: 15
+    Rank: 5
     Prefab: {fileID: 2541470355773081098, guid: 74382864535efc247b654719c3bc19ce, type: 3}
   - Suit: 0
-    Rank: 16
+    Rank: 6
     Prefab: {fileID: 2541470355773081098, guid: f96dd273c8b000f498121bb5c41d80eb, type: 3}
   - Suit: 0
-    Rank: 17
+    Rank: 7
     Prefab: {fileID: 2541470355773081098, guid: 7fdfcd12472330340a362a5fc16f352d, type: 3}
   - Suit: 0
-    Rank: 18
+    Rank: 8
     Prefab: {fileID: 2541470355773081098, guid: 487a529de6ddc224c8614ae23a33c02d, type: 3}
   - Suit: 0
-    Rank: 19
+    Rank: 9
     Prefab: {fileID: 2541470355773081098, guid: f51166502a3f02046ac9536a489eeb7f, type: 3}
   - Suit: 0
-    Rank: 20
+    Rank: 10
     Prefab: {fileID: 2541470355773081098, guid: 7f7321bbd4c1a2748af85cb466ea9fb7, type: 3}
   - Suit: 0
-    Rank: 21
+    Rank: 11
     Prefab: {fileID: 591865555038378390, guid: 25ba8541feacafb4cbd09811d3bdb689, type: 3}
   - Suit: 0
-    Rank: 22
+    Rank: 12
     Prefab: {fileID: 7677844680332615736, guid: 8b0ca56a74353164eadccccfd5b4145b, type: 3}
   - Suit: 0
-    Rank: 23
+    Rank: 13
     Prefab: {fileID: 8510457441784036385, guid: 031cf46456abde04bade017d21b49cef, type: 3}
   - Suit: 3
     Rank: 1

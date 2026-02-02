@@ -11,6 +11,11 @@ public abstract class Agent : MonoBehaviour
         currentHand = new Hand();
     }
 
-    protected abstract void Hit();
-    protected abstract void Stand();
+    protected virtual void SpawnCardPrefab(GameObject card, Vector3 spawnPos)
+    {
+        Instantiate(card, spawnPos, Quaternion.identity);
+    }
+
+    protected abstract void Hit(Card card);
+    protected abstract void Stand();   
 }

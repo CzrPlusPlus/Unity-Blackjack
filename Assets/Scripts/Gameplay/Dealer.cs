@@ -15,10 +15,29 @@ public class Dealer : Agent
         // to do
     }
 
-    protected override void Hit()
+    protected override void Hit(Card card)
     {
-        //Debug.Log("I am the dealer and I want to hit!");
-        Debug.Log("I am the dealer and this is how many cards I have currently: " + currentHand.CardCount);
+        GameObject newCard = CardPrefabDatabase.Instance.GetPrefab(card);
+
+        switch (currentHand.CardCount)
+        {
+            case 0: 
+                Debug.Log("Dealer first card");
+                Vector3 leftCardPos = new Vector3(leftCardX, leftCardY, leftCardZ);
+                currentHand.AddCardToHand(card);
+                SpawnCardPrefab(newCard, leftCardPos);
+                break;
+            case 1:
+                Debug.Log("Dealer second card");
+                Vector3 rightCardPos = new Vector3(rightCardX, rightCardY, rightCardZ);
+                currentHand.AddCardToHand(card);
+                SpawnCardPrefab(newCard, rightCardPos);
+                break;
+            default:
+                Debug.Log("Getting extra card now");
+                currentHand.AddCardToHand(card);
+                break;
+        }
     }
 
     protected override void Stand()
@@ -26,9 +45,9 @@ public class Dealer : Agent
         Debug.Log("I am the dealer and I want to stand!");
     }
 
-    public void RequestHit()
+    public void RequestHit(Card card)
     {
-        Hit();
+        Hit(card);
     }
 
     public void RequestStand()

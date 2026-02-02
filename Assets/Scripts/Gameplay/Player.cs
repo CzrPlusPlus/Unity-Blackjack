@@ -16,10 +16,41 @@ public class Player : Agent
         // Stand();
     }
 
-    protected override void Hit()
+    protected override void Hit(Card card)
     {
+        GameObject newCard = CardPrefabDatabase.Instance.GetPrefab(card);
+
+        switch (currentHand.CardCount)
+        {
+            case 0: 
+                Debug.Log("Getting first card now");
+                Vector3 leftCardPos = new Vector3(leftCardX, leftCardY, leftCardZ);
+                currentHand.AddCardToHand(card);
+                SpawnCardPrefab(newCard, leftCardPos);
+                break;
+            case 1:
+                Debug.Log("Getting second card now");
+                Vector3 rightCardPos = new Vector3(rightCardX, rightCardY, rightCardZ);
+                currentHand.AddCardToHand(card);
+                SpawnCardPrefab(newCard, rightCardPos);
+                break;
+            default:
+                Debug.Log("Getting extra card now");
+                currentHand.AddCardToHand(card);
+                break;
+        }
+    
         //Debug.Log("I am the player and I want to hit!");
-        Debug.Log("I am the player and this is how many cards I have currently: " + currentHand.CardCount);
+        // if (currentHand.CardCount == 0) // left card
+        // {
+        //     Vector3 leftCardPos = new Vector3(leftCardX, leftCardY, leftCardZ);
+        //     GameObject newCard = CardPrefabDatabase.Instance.GetPrefab(card);
+
+        //     currentHand.AddCardToHand(card);
+        //     SpawnCardPrefab(newCard, leftCardPos);
+            
+        // }
+        // Debug.Log("I am the player and this is how many cards I have currently: " + currentHand.CardCount);
     }
 
     protected override void Stand()
@@ -32,9 +63,9 @@ public class Player : Agent
         Debug.Log("I am the player and I want to double down");
     }
 
-    public void OnHitButton()
+    public void OnHitButton(Card card)
     {
-        Hit();
+        Hit(card);
     }
 
     public void OnStandButton()

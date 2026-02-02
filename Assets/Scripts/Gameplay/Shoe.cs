@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Shoe : MonoBehaviour
+public class Shoe
 {
     List<Card> shoe = new List<Card>();
 
@@ -30,10 +30,18 @@ public class Shoe : MonoBehaviour
         }
     }
 
-    Card DealCard()     // returns a Card (suit & rank)
+    public void Initialize()
+    {
+        BuildShoe();
+        ShuffleShoe();
+    }
+
+    public Card DealCard()     // returns a Card (suit & rank)
     {
         Card card = shoe[0];
         shoe.RemoveAt(0);
         return card;
     }
+
+    public int CardCount => shoe.Count; // can probably get rid of this method
 }

@@ -21,6 +21,11 @@ public class Hand
         return total;
     }
 
+    public void AddCardToHand(Card card)
+    {
+        Cards.Add(card);
+    }
+
     public bool isBust => GetTotal() > 21;
     public bool isBlackjack => Cards.Count == 2 && GetTotal() == 21;
     public int Total => GetTotal();
