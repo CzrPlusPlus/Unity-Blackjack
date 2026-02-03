@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private Dealer dealer;
     private Shoe shoe;
-    //private bool firstCardsDealt = false;
+    private bool doubleDown = false;
 
     /* What are the chronological steps that happen in a blackjack game? 
     1. Shoe must be made and shuffled

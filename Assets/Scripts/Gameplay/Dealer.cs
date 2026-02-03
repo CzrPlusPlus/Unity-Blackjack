@@ -5,13 +5,6 @@ public class Dealer : Agent
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject hiddenCard;
     private GameObject hiddenPrefab;
-    private float leftCardX = -1f;
-    private float leftCardY = 3f;
-    private float leftCardZ = 0;
-    private float rightCardX = 1f;
-    private float rightCardY = 3f;
-    private float rightCardZ = 0;
-    private float rightMostX = 1f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,18 +20,18 @@ public class Dealer : Agent
         {
             case 0: 
                 currentHand.AddCardToHand(card);
-                Vector3 leftCardPos = new Vector3(leftCardX, leftCardY, leftCardZ);
+                Vector3 leftCardPos = new Vector3(leftCardX, leftCardY * -1, leftCardZ);
                 hiddenPrefab = SpawnCardPrefab(hiddenCard, leftCardPos, transform);
                 SpawnCardPrefab(newCard, leftCardPos, transform);
                 break;
             case 1:
                 currentHand.AddCardToHand(card);
-                Vector3 rightCardPos = new Vector3(rightCardX, rightCardY, rightCardZ);
+                Vector3 rightCardPos = new Vector3(rightCardX, rightCardY * -1, rightCardZ);
                 SpawnCardPrefab(newCard, rightCardPos, transform);
                 break;
             default:
                 Debug.Log("Getting extra card now");
-                Vector3 newCardPos = new Vector3(rightMostX + 2f, rightCardY, rightCardZ);
+                Vector3 newCardPos = new Vector3(rightMostX + 2f, rightCardY * -1, rightCardZ);
                 currentHand.AddCardToHand(card);
                 SpawnCardPrefab(newCard, newCardPos, transform);   // will need to store these prefab references to delete them safely
                 transform.position += new Vector3(-1f, 0f, 0f);
