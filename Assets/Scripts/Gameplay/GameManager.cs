@@ -1,11 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private Dealer dealer;
+    [SerializeField] private GameObject modalWin;
+    [SerializeField] private GameObject modalLoss;
+    [SerializeField] private GameObject modalTie;
+    [SerializeField] private Button hitButton;  
+    [SerializeField] private Button standButton;  
+    [SerializeField] private Button doubleDownButton;  
     private Shoe shoe;
     private bool doubleDown = false;
+    private bool isGameOver = false;
 
     /* What are the chronological steps that happen in a blackjack game? 
     1. Shoe must be made and shuffled
@@ -28,34 +37,68 @@ public class GameManager : MonoBehaviour
         DealInitialCards();
     }
 
-    void CheckGameState()
+    void Update()
     {
-        /* 4 Possible Game States:
-        1. No one has blackjack (Await player action)
-        2. Only dealer has blackjack (dealer wins)
-        3. Only player has blackjack (player wins)
-        4. Both dealer & player have blackjack (tie) 
-        */
-        Debug.Log("Checking Game State...");
-        if (!dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
-        {
-            Debug.Log("Game can continue.");
-        }
-        else if (dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
-        {
-            Debug.Log("Dealer wins. Reveal hidden card.");
-            // reveal hidden card
-        }
-        else if (!dealer.currentHand.isBlackjack && player.currentHand.isBlackjack)
-        {
-            Debug.Log("Player wins. Reveal hidden card.");
-            // reveal hidden card
-        }
-        else
-        {
-            Debug.Log("It's a tie. Reveal hidden card.");
-            // reveal hidden card
-        }
+        // while (isGameOver)
+        // {
+        //     if (Keyboard.current.enterKey.wasPressedThisFrame)
+        //     {
+        //         NewGame();
+        //     }
+        // }
+    }
+
+    void PlayerWin()
+    {
+        Debug.Log("Player wins. Reveal hidden card.");
+        dealer.RevealHidden();
+        isGameOver = true;
+        modalWin.SetActive(true);
+        hitButton.gameObject.SetActive(false);
+        standButton.gameObject.SetActive(false);
+        doubleDownButton.gameObject.SetActive(false);
+        //NewGame();
+    }
+
+    void DealerWin()
+    {
+        Debug.Log("Dealer wins. Reveal hidden card.");
+        dealer.RevealHidden();
+        isGameOver = true;
+        modalLoss.SetActive(true);
+        hitButton.gameObject.SetActive(false);
+        standButton.gameObject.SetActive(false);
+        doubleDownButton.gameObject.SetActive(false);
+        //NewGame();
+    }
+
+    void TieGame()
+    {
+        Debug.Log("Tie game. Keep your money.");
+        dealer.RevealHidden();
+        isGameOver = true;
+        modalTie.SetActive(true);
+        hitButton.gameObject.SetActive(false);
+        standButton.gameObject.SetActive(false);
+        doubleDownButton.gameObject.SetActive(false);
+        //NewGame();
+    }
+
+    [ContextMenu("Start New Game")]
+    void NewGame()
+    {
+        doubleDown = false;
+        isGameOver = false;
+        modalWin.SetActive(false);
+        modalLoss.SetActive(false);
+        modalTie.SetActive(false);
+        hitButton.gameObject.SetActive(true);
+        standButton.gameObject.SetActive(true);
+        doubleDownButton.gameObject.SetActive(true);
+        dealer.ClearHand();
+        player.ClearHand();
+        // update UI
+        DealInitialCards();
     }
 
     void DealInitialCards()
@@ -64,12 +107,52 @@ public class GameManager : MonoBehaviour
         dealer.RequestHit(shoe.DealCard());
         player.RequestHit(shoe.DealCard());
         dealer.RequestHit(shoe.DealCard());
-        CheckGameState();
+        CheckInitialState();
+    }
+
+    void CheckInitialState()
+    {
+        if (!dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
+        {
+            Debug.Log("Game can continue.");
+        }
+        else if (dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
+        {
+            DealerWin();
+        }
+        else if (!dealer.currentHand.isBlackjack && player.currentHand.isBlackjack)
+        {
+            PlayerWin();
+        }
+        else
+        {
+            TieGame();
+        }
+    }
+
+    void EvaluateHands()
+    {
+        if (player.currentHand.Total > dealer.currentHand.Total)
+        {
+            PlayerWin();
+        }
+        else if (player.currentHand.Total < dealer.currentHand.Total)
+        {
+            DealerWin();
+        }
+        else
+        {
+            TieGame();
+        }
     }
 
     public void RequestDeal()
     {
-        player.RequestHit(shoe.DealCard());
+        player.RequestHit(shoe.DealCard()); 
+        if (player.currentHand.isBust)
+        {
+            DealerWin();
+        }           
     }
 
     public void CheckDealerAction()
@@ -77,6 +160,15 @@ public class GameManager : MonoBehaviour
         if (dealer.ShouldHit)
         {
             dealer.RequestHit(shoe.DealCard());
+            if (dealer.currentHand.isBust)
+            {
+                PlayerWin();
+            }
+            else
+            {
+                CheckDealerAction();
+            }
         }
+        EvaluateHands();
     }
 }

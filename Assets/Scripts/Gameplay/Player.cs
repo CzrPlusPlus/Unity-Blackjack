@@ -20,22 +20,28 @@ public class Player : Agent
             case 0: 
                 Vector3 leftCardPos = new Vector3(leftCardX, leftCardY, leftCardZ);
                 currentHand.AddCardToHand(card);
-                SpawnCardPrefab(newCard, leftCardPos, transform);  // will need to store these prefab references to delete them safely
+                cardPrefabs.Add(SpawnCardPrefab(newCard, leftCardPos, transform));  
                 break;
             case 1:
                 Vector3 rightCardPos = new Vector3(rightCardX, rightCardY, rightCardZ);
                 currentHand.AddCardToHand(card);
-                SpawnCardPrefab(newCard, rightCardPos, transform); // will need to store these prefab references to delete them safely
+                cardPrefabs.Add(SpawnCardPrefab(newCard, rightCardPos, transform)); 
                 break;
             default:
                 Debug.Log("Getting extra card now");
                 Vector3 newCardPos = new Vector3(rightMostX + 2f, rightCardY, rightCardZ);
                 currentHand.AddCardToHand(card);
-                SpawnCardPrefab(newCard, newCardPos, transform);   // will need to store these prefab references to delete them safely
+                cardPrefabs.Add(SpawnCardPrefab(newCard, newCardPos, transform));   
                 transform.position += new Vector3(-1f, 0f, 0f);
                 rightMostX += 1f;
                 break;
         }
+    }
+
+    [ContextMenu("Destroy All Card Objects")]
+    private void DestroyCards()
+    {
+        DestroyAll();
     }
 
     protected override void Stand()
@@ -67,4 +73,6 @@ public class Player : Agent
     {
         DoubleDown();
     }
+
+    public void ClearHand() { DestroyCards(); }
 }

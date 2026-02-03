@@ -22,18 +22,18 @@ public class Dealer : Agent
                 currentHand.AddCardToHand(card);
                 Vector3 leftCardPos = new Vector3(leftCardX, leftCardY * -1, leftCardZ);
                 hiddenPrefab = SpawnCardPrefab(hiddenCard, leftCardPos, transform);
-                SpawnCardPrefab(newCard, leftCardPos, transform);
+                cardPrefabs.Add(SpawnCardPrefab(newCard, leftCardPos, transform));
                 break;
             case 1:
                 currentHand.AddCardToHand(card);
                 Vector3 rightCardPos = new Vector3(rightCardX, rightCardY * -1, rightCardZ);
-                SpawnCardPrefab(newCard, rightCardPos, transform);
+                cardPrefabs.Add(SpawnCardPrefab(newCard, rightCardPos, transform));
                 break;
             default:
                 Debug.Log("Getting extra card now");
                 Vector3 newCardPos = new Vector3(rightMostX + 2f, rightCardY * -1, rightCardZ);
                 currentHand.AddCardToHand(card);
-                SpawnCardPrefab(newCard, newCardPos, transform);   // will need to store these prefab references to delete them safely
+                cardPrefabs.Add(SpawnCardPrefab(newCard, newCardPos, transform)); 
                 transform.position += new Vector3(-1f, 0f, 0f);
                 rightMostX += 1f;
                 gameManager.CheckDealerAction();
@@ -57,7 +57,7 @@ public class Dealer : Agent
     }
 
     [ContextMenu("Destroy Hidden Card")]
-    private void TestDestroy()
+    private void DestroyHidden()
     {
         if (hiddenPrefab != null)
         {
@@ -71,5 +71,14 @@ public class Dealer : Agent
         }
     }
 
+    [ContextMenu("Destroy All Card Objects")]
+    private void DestroyCards()
+    {
+        DestroyAll();
+    }
+
+
     public bool ShouldHit => currentHand.Total < 17;
+    public void RevealHidden() { DestroyHidden(); }
+    public void ClearHand() { DestroyCards(); }
 }

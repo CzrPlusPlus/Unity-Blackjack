@@ -27,6 +27,20 @@ public abstract class Agent : MonoBehaviour
         return Instantiate(card, spawnPos, Quaternion.identity, parent);
     }
 
+    protected virtual void DestroyAll()
+    {
+        if (cardPrefabs.Count > 0)
+        {
+            foreach (var card in cardPrefabs)
+            {
+                Destroy(card);
+            }
+            cardPrefabs.Clear();
+            currentHand.Cards.Clear();
+            rightMostX = 1f;
+        }
+    }
+
     protected abstract void Hit(Card card);
     protected abstract void Stand();   
 }
