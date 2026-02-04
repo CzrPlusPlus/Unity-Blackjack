@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private Dealer dealer;
+    [SerializeField] private UIManager uiManager;
     [SerializeField] private GameObject modalWin;
     [SerializeField] private GameObject modalLoss;
     [SerializeField] private GameObject modalTie;
@@ -52,7 +53,17 @@ public class GameManager : MonoBehaviour
         hitButton.gameObject.SetActive(false);
         standButton.gameObject.SetActive(false);
         doubleDownButton.gameObject.SetActive(false);
-        //NewGame();
+        if (doubleDown)
+        {
+            // +$50
+            uiManager.UpdateStats(50);
+        }
+        else
+        {
+            // +$25
+            uiManager.UpdateStats(25);
+        }
+        // update
     }
 
     void DealerWin()
@@ -65,7 +76,16 @@ public class GameManager : MonoBehaviour
         hitButton.gameObject.SetActive(false);
         standButton.gameObject.SetActive(false);
         doubleDownButton.gameObject.SetActive(false);
-        //NewGame();
+        if (doubleDown)
+        {
+            // +$50
+            uiManager.UpdateStats(-50);
+        }
+        else
+        {
+            // +$25
+            uiManager.UpdateStats(-25);
+        }
     }
 
     void TieGame()
@@ -97,7 +117,7 @@ public class GameManager : MonoBehaviour
         player.ClearHand();
         playerTotalText.text = "Current Total: 0";
         dealerTotalText.text = "Current Total: ?";
-        // update UI
+        uiManager.NextRound();
         StartCoroutine(DealInitialCards());
     }
 
@@ -159,18 +179,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void RequestDeal()
+    public void RequestDeal(bool playerDoubleDown = false)
     {
+        doubleDown = playerDoubleDown ? true : false;
         player.RequestHit(shoe.DealCard()); 
         playerTotalText.text = "Current Total: " + player.currentHand.Total;
         if (player.currentHand.isBust)
         {
             DealerWin();
         }
-        else if (player.currentHand.Total == 21)
+        else if (player.currentHand.Total == 21 || doubleDown)
         {
             player.OnStandButton();
-        }           
+        }         
     }
 
     public IEnumerator CheckDealerAction()
@@ -194,7 +215,6 @@ public class GameManager : MonoBehaviour
         {
             if (!isGameOver)
             {
-                // dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
                 EvaluateHands();   
             }
         }

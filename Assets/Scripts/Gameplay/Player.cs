@@ -70,7 +70,7 @@ public class Player : Agent
 
     public void OnDoubleDownButton()
     {
-        DoubleDown();
+        gameManager.RequestDeal(true);
     }
 
     public void ClearHand() { DestroyCards(); }
