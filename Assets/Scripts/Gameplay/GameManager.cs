@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,20 +13,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject modalTie;
     [SerializeField] private Button hitButton;  
     [SerializeField] private Button standButton;  
-    [SerializeField] private Button doubleDownButton;  
+    [SerializeField] private Button doubleDownButton;
+    [SerializeField] private TextMeshProUGUI playerTotalText;
+    [SerializeField] private TextMeshProUGUI dealerTotalText;
     private Shoe shoe;
     private bool doubleDown = false;
     private bool isGameOver = false;
-
-    /* What are the chronological steps that happen in a blackjack game? 
-    1. Shoe must be made and shuffled
-    2. Deal cards to player and dealer with one card hidden for the dealer
-    3. Check game state as the game may be over already
-    4. If game not over, check player action
-    5. If player doesn't bust, check dealer action
-    6. If dealer stands, check who wins
-    7. If dealer hits, check conditions again until step 6 is done or dealer busts
-    */
 
     void Awake()
     {
@@ -33,8 +27,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        shoe.Initialize();  // this accomplishes step 1
-        DealInitialCards();
+        shoe.Initialize();
+        NewGame();
     }
 
     void Update()
@@ -50,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     void PlayerWin()
     {
-        Debug.Log("Player wins. Reveal hidden card.");
+        StopAllCoroutines();
         dealer.RevealHidden();
         isGameOver = true;
         modalWin.SetActive(true);
@@ -62,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     void DealerWin()
     {
-        Debug.Log("Dealer wins. Reveal hidden card.");
+        StopAllCoroutines();
         dealer.RevealHidden();
         isGameOver = true;
         modalLoss.SetActive(true);
@@ -74,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     void TieGame()
     {
-        Debug.Log("Tie game. Keep your money.");
+        StopAllCoroutines();
         dealer.RevealHidden();
         isGameOver = true;
         modalTie.SetActive(true);
@@ -87,6 +81,7 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Start New Game")]
     void NewGame()
     {
+        // Debug.Log("Number of cards in the shoe: " + shoe.CardCount);
         doubleDown = false;
         isGameOver = false;
         modalWin.SetActive(false);
@@ -98,14 +93,26 @@ public class GameManager : MonoBehaviour
         dealer.ClearHand();
         player.ClearHand();
         // update UI
-        DealInitialCards();
+        StartCoroutine(DealInitialCards());
     }
 
-    void DealInitialCards()
+    IEnumerator DealInitialCards()
     {
+        // player card 1
         player.RequestHit(shoe.DealCard());
+        playerTotalText.text = "Current Total: " + player.currentHand.Total;
+        yield return new WaitForSeconds(0.5f);
+
+        // dealer card 1
         dealer.RequestHit(shoe.DealCard());
+        yield return new WaitForSeconds(0.5f);
+
+        // player card 2
         player.RequestHit(shoe.DealCard());
+        playerTotalText.text = "Current Total: " + player.currentHand.Total;
+        yield return new WaitForSeconds(0.5f);
+
+        // dealer card 2
         dealer.RequestHit(shoe.DealCard());
         CheckInitialState();
     }
@@ -152,6 +159,10 @@ public class GameManager : MonoBehaviour
         if (player.currentHand.isBust)
         {
             DealerWin();
+        }
+        else if (player.currentHand.Total == 21)
+        {
+            CheckDealerAction();
         }           
     }
 
@@ -169,6 +180,9 @@ public class GameManager : MonoBehaviour
                 CheckDealerAction();
             }
         }
-        EvaluateHands();
+        else
+        {
+            EvaluateHands();
+        }
     }
 }
