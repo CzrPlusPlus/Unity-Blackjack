@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         dealer.RevealHidden();
+        dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
         isGameOver = true;
         modalWin.SetActive(true);
         hitButton.gameObject.SetActive(false);
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         dealer.RevealHidden();
+        dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
         isGameOver = true;
         modalLoss.SetActive(true);
         hitButton.gameObject.SetActive(false);
@@ -70,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         dealer.RevealHidden();
+        dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
         isGameOver = true;
         modalTie.SetActive(true);
         hitButton.gameObject.SetActive(false);
@@ -92,6 +95,8 @@ public class GameManager : MonoBehaviour
         doubleDownButton.gameObject.SetActive(true);
         dealer.ClearHand();
         player.ClearHand();
+        playerTotalText.text = "Current Total: 0";
+        dealerTotalText.text = "Current Total: ?";
         // update UI
         StartCoroutine(DealInitialCards());
     }
@@ -99,20 +104,21 @@ public class GameManager : MonoBehaviour
     IEnumerator DealInitialCards()
     {
         // player card 1
+        yield return new WaitForSeconds(0.5f);
         player.RequestHit(shoe.DealCard());
         playerTotalText.text = "Current Total: " + player.currentHand.Total;
-        yield return new WaitForSeconds(0.5f);
 
         // dealer card 1
-        dealer.RequestHit(shoe.DealCard());
         yield return new WaitForSeconds(0.5f);
+        dealer.RequestHit(shoe.DealCard());
 
         // player card 2
+        yield return new WaitForSeconds(0.5f);
         player.RequestHit(shoe.DealCard());
         playerTotalText.text = "Current Total: " + player.currentHand.Total;
-        yield return new WaitForSeconds(0.5f);
 
         // dealer card 2
+        yield return new WaitForSeconds(0.5f);
         dealer.RequestHit(shoe.DealCard());
         CheckInitialState();
     }
@@ -121,7 +127,7 @@ public class GameManager : MonoBehaviour
     {
         if (!dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
         {
-            Debug.Log("Game can continue.");
+            // Await Player Action
         }
         else if (dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
         {
@@ -156,33 +162,41 @@ public class GameManager : MonoBehaviour
     public void RequestDeal()
     {
         player.RequestHit(shoe.DealCard()); 
+        playerTotalText.text = "Current Total: " + player.currentHand.Total;
         if (player.currentHand.isBust)
         {
             DealerWin();
         }
         else if (player.currentHand.Total == 21)
         {
-            CheckDealerAction();
+            player.OnStandButton();
         }           
     }
 
-    public void CheckDealerAction()
+    public IEnumerator CheckDealerAction()
     {
+        dealer.RevealHidden();
         if (dealer.ShouldHit)
         {
             dealer.RequestHit(shoe.DealCard());
+            dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
             if (dealer.currentHand.isBust)
             {
                 PlayerWin();
             }
             else
             {
-                CheckDealerAction();
+                yield return new WaitForSeconds(0.5f);
+                StartCoroutine(CheckDealerAction());
             }
         }
         else
         {
-            EvaluateHands();
+            if (!isGameOver)
+            {
+                // dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
+                EvaluateHands();   
+            }
         }
     }
 }

@@ -30,7 +30,6 @@ public class Dealer : Agent
                 cardPrefabs.Add(SpawnCardPrefab(newCard, rightCardPos, transform));
                 break;
             default:
-                Debug.Log("Getting extra card now");
                 Vector3 newCardPos = new Vector3(rightMostX + 2f, rightCardY * -1, rightCardZ);
                 currentHand.AddCardToHand(card);
                 cardPrefabs.Add(SpawnCardPrefab(newCard, newCardPos, transform)); 
@@ -61,13 +60,13 @@ public class Dealer : Agent
     {
         if (hiddenPrefab != null)
         {
-            Debug.Log("Destroying hidden card prefab.");
+            // Debug.Log("Destroying hidden card prefab.");
             Destroy(hiddenPrefab);
             hiddenPrefab = null; // Clear reference
         }
         else
         {
-            Debug.LogWarning("hiddenPrefab is null, nothing to destroy.");
+            // Debug.Log("hiddenPrefab is null, nothing to destroy.");
         }
     }
 

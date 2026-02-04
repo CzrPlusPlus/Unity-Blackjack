@@ -28,7 +28,6 @@ public class Player : Agent
                 cardPrefabs.Add(SpawnCardPrefab(newCard, rightCardPos, transform)); 
                 break;
             default:
-                Debug.Log("Getting extra card now");
                 Vector3 newCardPos = new Vector3(rightMostX + 2f, rightCardY, rightCardZ);
                 currentHand.AddCardToHand(card);
                 cardPrefabs.Add(SpawnCardPrefab(newCard, newCardPos, transform));   
@@ -66,7 +65,7 @@ public class Player : Agent
 
     public void OnStandButton()
     {
-        gameManager.CheckDealerAction();
+        gameManager.StartCoroutine(gameManager.CheckDealerAction());
     }
 
     public void OnDoubleDownButton()
