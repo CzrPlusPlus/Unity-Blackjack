@@ -8,11 +8,6 @@ public class MainMenuUIHandler : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void LoadInfiniteMode()
-    {
-        Debug.Log("This feature coming soon!");
-    }
-
     public void Exit()
     {
         Application.Quit();
