@@ -3,22 +3,19 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private Dealer dealer;
     [SerializeField] private UIManager uiManager;
-    [SerializeField] private GameObject modalWin;
-    [SerializeField] private GameObject modalLoss;
-    [SerializeField] private GameObject modalTie;
-    [SerializeField] private Button hitButton;  
-    [SerializeField] private Button standButton;  
-    [SerializeField] private Button doubleDownButton;
+    [SerializeField] private SessionTimer sessionTimer;
     [SerializeField] private TextMeshProUGUI playerTotalText;
     [SerializeField] private TextMeshProUGUI dealerTotalText;
     private Shoe shoe;
     private bool doubleDown = false;
+    private bool isRoundOver = false;
     private bool isGameOver = false;
 
     void Awake()
@@ -34,13 +31,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // while (isGameOver)
-        // {
-        //     if (Keyboard.current.enterKey.wasPressedThisFrame)
-        //     {
-        //         NewGame();
-        //     }
-        // }
+        if (isRoundOver && Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            NewGame();
+        }
+        if (isGameOver && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     void PlayerWin()
@@ -48,22 +46,28 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         dealer.RevealHidden();
         dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
-        isGameOver = true;
-        modalWin.SetActive(true);
-        hitButton.gameObject.SetActive(false);
-        standButton.gameObject.SetActive(false);
-        doubleDownButton.gameObject.SetActive(false);
+        isRoundOver = true;
+        uiManager.RequestHideButtons();
         if (doubleDown)
         {
-            // +$50
-            uiManager.UpdateStats(50);
+            uiManager.UpdateStats(50);  // +$50
         }
         else
         {
-            // +$25
-            uiManager.UpdateStats(25);
+            uiManager.UpdateStats(25);  // +$25
         }
-        // update
+        
+        if (uiManager.GetHandNumber >= 30)
+        {
+            isRoundOver = false;
+            uiManager.RequestGameOver();
+            isGameOver = true;
+            // stop timer
+        }
+        else
+        {
+            uiManager.RequestShowModal(1);   
+        }
     }
 
     void DealerWin()
@@ -71,21 +75,28 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         dealer.RevealHidden();
         dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
-        isGameOver = true;
-        modalLoss.SetActive(true);
-        hitButton.gameObject.SetActive(false);
-        standButton.gameObject.SetActive(false);
-        doubleDownButton.gameObject.SetActive(false);
+        isRoundOver = true;
+        uiManager.RequestHideButtons();
         if (doubleDown)
         {
-            // +$50
-            uiManager.UpdateStats(-50);
+            uiManager.UpdateStats(-50); // +$50
         }
         else
         {
-            // +$25
-            uiManager.UpdateStats(-25);
+            uiManager.UpdateStats(-25); // +$25
         }
+        
+        if (uiManager.GetHandNumber >= 30)
+        {
+            isRoundOver = false;
+            uiManager.RequestGameOver();
+            isGameOver = true;
+            // stop timer
+        }
+        else
+        {
+            uiManager.RequestShowModal(2);   
+        }   
     }
 
     void TieGame()
@@ -93,12 +104,20 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         dealer.RevealHidden();
         dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
-        isGameOver = true;
-        modalTie.SetActive(true);
-        hitButton.gameObject.SetActive(false);
-        standButton.gameObject.SetActive(false);
-        doubleDownButton.gameObject.SetActive(false);
-        //NewGame();
+        isRoundOver = true;
+        uiManager.RequestHideButtons();
+
+        if (uiManager.GetHandNumber >= 30)
+        {
+            isRoundOver = false;
+            uiManager.RequestGameOver();
+            isGameOver = true;
+            // stop timer
+        }
+        else
+        {
+            uiManager.RequestShowModal(3);   
+        }
     }
 
     [ContextMenu("Start New Game")]
@@ -106,13 +125,10 @@ public class GameManager : MonoBehaviour
     {
         // Debug.Log("Number of cards in the shoe: " + shoe.CardCount);
         doubleDown = false;
-        isGameOver = false;
-        modalWin.SetActive(false);
-        modalLoss.SetActive(false);
-        modalTie.SetActive(false);
-        hitButton.gameObject.SetActive(true);
-        standButton.gameObject.SetActive(true);
-        doubleDownButton.gameObject.SetActive(true);
+        isRoundOver = false;
+        uiManager.RequestHideModal();
+        uiManager.RequestShowButtons();
+        uiManager.RequestDisableButtons();
         dealer.ClearHand();
         player.ClearHand();
         playerTotalText.text = "Current Total: 0";
@@ -147,7 +163,7 @@ public class GameManager : MonoBehaviour
     {
         if (!dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
         {
-            // Await Player Action
+            uiManager.RequestEnableButtons();
         }
         else if (dealer.currentHand.isBlackjack && !player.currentHand.isBlackjack)
         {
@@ -213,7 +229,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (!isGameOver)
+            if (!isRoundOver)
             {
                 EvaluateHands();   
             }
