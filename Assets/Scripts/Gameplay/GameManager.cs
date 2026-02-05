@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
             isRoundOver = false;
             uiManager.RequestGameOver();
             isGameOver = true;
-            // stop timer
+            sessionTimer.StopTimer();
         }
         else
         {
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
             isRoundOver = false;
             uiManager.RequestGameOver();
             isGameOver = true;
-            // stop timer
+            sessionTimer.StopTimer();
         }
         else
         {
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
             isRoundOver = false;
             uiManager.RequestGameOver();
             isGameOver = true;
-            // stop timer
+            sessionTimer.StopTimer();
         }
         else
         {
