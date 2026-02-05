@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SessionTimer sessionTimer;
     [SerializeField] private TextMeshProUGUI playerTotalText;
     [SerializeField] private TextMeshProUGUI dealerTotalText;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip winSound;
+    [SerializeField] private AudioClip lossSound;
     private Shoe shoe;
     private bool doubleDown = false;
     private bool isRoundOver = false;
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
     void PlayerWin()
     {
         StopAllCoroutines();
+        PlaySound();
         dealer.RevealHidden();
         dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
         isRoundOver = true;
@@ -73,6 +77,7 @@ public class GameManager : MonoBehaviour
     void DealerWin()
     {
         StopAllCoroutines();
+        PlaySound(false);
         dealer.RevealHidden();
         dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
         isRoundOver = true;
@@ -102,6 +107,7 @@ public class GameManager : MonoBehaviour
     void TieGame()
     {
         StopAllCoroutines();
+        PlaySound();
         dealer.RevealHidden();
         dealerTotalText.text = "Current Total: " + dealer.currentHand.Total;
         isRoundOver = true;
@@ -233,6 +239,18 @@ public class GameManager : MonoBehaviour
             {
                 EvaluateHands();   
             }
+        }
+    }
+
+    void PlaySound(bool win = true)
+    {
+        if (win)
+        {
+            audioSource.PlayOneShot(winSound);
+        }
+        else
+        {
+            audioSource.PlayOneShot(lossSound);
         }
     }
 }
