@@ -7,7 +7,7 @@ public class Shoe
 
     void BuildShoe()    // this function builds a 6-deck shoe
     {
-        shoe.Clear();   // assuming this is a method for List
+        shoe.Clear();
 
         for (int i = 0; i < 6; i++)
         {
@@ -42,6 +42,4 @@ public class Shoe
         shoe.RemoveAt(0);
         return card;
     }
-
-    public int CardCount => shoe.Count; // can probably get rid of this method
 }

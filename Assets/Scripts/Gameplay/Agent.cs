@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
+/* THIS CLASS IS MADE AS A PARENT CLASS FROM WHICH TWO OTHER CLASSES WILL INHERIT */
 public abstract class Agent : MonoBehaviour
 {
     public Hand currentHand { get; private set; }   // Holds a list of Card objects with a few methods
@@ -41,6 +42,5 @@ public abstract class Agent : MonoBehaviour
         }
     }
 
-    protected abstract void Hit(Card card);
-    protected abstract void Stand();   
+    protected abstract void Hit(Card card); 
 }

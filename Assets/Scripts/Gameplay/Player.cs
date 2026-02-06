@@ -1,17 +1,11 @@
 using UnityEngine;
 
+/* EXAMPLE OF INHERITANCE. PLAYER CLASS INHERITS FROM AGENT CLASS. */
 public class Player : Agent
 {
     [SerializeField] private GameManager gameManager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        // Hit();
-        // Stand();
-    }
-
-    protected override void Hit(Card card)
+    protected override void Hit(Card card)  // POLYMORPHISM
     {
         GameObject newCard = CardPrefabDatabase.Instance.GetPrefab(card); 
 
@@ -37,41 +31,15 @@ public class Player : Agent
         }
     }
 
-    [ContextMenu("Destroy All Card Objects")]
     private void DestroyCards()
     {
         DestroyAll();
     }
 
-    protected override void Stand()
-    {
-        Debug.Log("I am the player and I want to stand!");
-    }
-
-    private void DoubleDown()
-    {
-        Debug.Log("I am the player and I want to double down");
-    }
-
-    public void RequestHit(Card card)
-    {
-        Hit(card);
-    }
-
-    public void OnHitButton()
-    {
-        gameManager.RequestDeal();
-    }
-
-    public void OnStandButton()
-    {
-        gameManager.StartCoroutine(gameManager.CheckDealerAction());
-    }
-
-    public void OnDoubleDownButton()
-    {
-        gameManager.RequestDeal(true);
-    }
-
+    /* ABSTRACTION + ENCAPSULATION */
+    public void RequestHit(Card card) { Hit(card); }
+    public void OnHitButton() { gameManager.RequestDeal(); }
+    public void OnStandButton() { gameManager.StartCoroutine(gameManager.CheckDealerAction()); }
+    public void OnDoubleDownButton() { gameManager.RequestDeal(true); }
     public void ClearHand() { DestroyCards(); }
 }

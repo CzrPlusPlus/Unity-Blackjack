@@ -1,18 +1,13 @@
 using UnityEngine;
 
+/* EXAMPLE OF INHERITANCE. DEALER CLASS INHERITS FROM AGENT CLASS. */
 public class Dealer : Agent
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject hiddenCard;
     private GameObject hiddenPrefab;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-       // to do
-    }
 
-    protected override void Hit(Card card)
+    protected override void Hit(Card card)  // POLYMORPHISM
     {
         GameObject newCard = CardPrefabDatabase.Instance.GetPrefab(card);
 
@@ -40,44 +35,23 @@ public class Dealer : Agent
         }
     }
 
-    protected override void Stand()
-    {
-        Debug.Log("I am the dealer and I want to stand!");
-    }
-
-    public void RequestHit(Card card)
-    {
-        Hit(card);
-    }
-
-    public void RequestStand()
-    {
-        Stand();
-    }
-
-    [ContextMenu("Destroy Hidden Card")]
     private void DestroyHidden()
     {
         if (hiddenPrefab != null)
         {
-            // Debug.Log("Destroying hidden card prefab.");
             Destroy(hiddenPrefab);
             hiddenPrefab = null; // Clear reference
         }
-        else
-        {
-            // Debug.Log("hiddenPrefab is null, nothing to destroy.");
-        }
     }
 
-    [ContextMenu("Destroy All Card Objects")]
     private void DestroyCards()
     {
         DestroyAll();
     }
 
-
+    /* ABSTRACTION + ENCAPSULATION */
     public bool ShouldHit => currentHand.Total < 17;
     public void RevealHidden() { DestroyHidden(); }
     public void ClearHand() { DestroyCards(); }
+    public void RequestHit(Card card) { Hit(card); }
 }

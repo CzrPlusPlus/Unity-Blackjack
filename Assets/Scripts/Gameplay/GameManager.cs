@@ -34,11 +34,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (isRoundOver && Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (isRoundOver && Keyboard.current.spaceKey.wasPressedThisFrame)   // Checking for user input to start next hand
         {
             NewGame();
         }
-        if (isGameOver && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (isGameOver && Keyboard.current.escapeKey.wasPressedThisFrame)   // checking for user input to return to main menu
         {
             SceneManager.LoadScene(0);
         }
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            uiManager.RequestShowModal(1);   
+            uiManager.RequestShowModal(1);   // modal 1 = win modal
         }
     }
 
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            uiManager.RequestShowModal(2);   
+            uiManager.RequestShowModal(2);  // modal 2 = loss modal 
         }   
     }
 
@@ -122,14 +122,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            uiManager.RequestShowModal(3);   
+            uiManager.RequestShowModal(3);   // modal 3 = tie modal
         }
     }
 
-    [ContextMenu("Start New Game")]
     void NewGame()
     {
-        // Debug.Log("Number of cards in the shoe: " + shoe.CardCount);
         doubleDown = false;
         isRoundOver = false;
         uiManager.RequestHideModal();

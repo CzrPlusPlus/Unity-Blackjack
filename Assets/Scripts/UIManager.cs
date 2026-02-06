@@ -19,8 +19,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button hitButton;  
     [SerializeField] private Button standButton;  
     [SerializeField] private Button doubleDownButton;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()    // was originally Start
+    
+    void Awake()    
     {
         handNumber = 0;
         bankroll = 1000;
