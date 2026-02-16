@@ -15,3 +15,6 @@ https://github.com/user-attachments/assets/e85575a2-3810-46e8-8440-c25072835190
 - **UI!!!!!!** <br>
 All of the UI elements & prefab instantiating are done using *world coordinates*. This is **NOT** good implementation.
 Need to utilize Canvas better and use Rect Transform, Anchors, and Pivots. The game is pretty much designed exclusively for 16:9 1920x1080 display.
+
+## Assets used
+...
