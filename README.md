@@ -8,9 +8,11 @@ Try the game [here](https://czr838.itch.io/blackjacksimv2). The game should be f
 The password is: **unity**
 
 ## Images & Video Demonstration
-<img src ="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/blackjack1.PNG" width="200" />
-<img src ="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/blackjack3.PNG" width="200" />
-<img src ="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/blackjack4.PNG" width="200" />
+<p align="center">
+  <img src ="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/blackjack1.PNG" width="300" />
+  <img src ="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/blackjack3.PNG" width="300" />
+  <img src ="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/blackjack4.PNG" width="300" />
+</p>
 <video src="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/Movie_003.mp4" width="600" controls></video>
 
 
