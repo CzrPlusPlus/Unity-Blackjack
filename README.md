@@ -9,7 +9,7 @@ The password is: **unity**
 
 ## Images & Video Demonstration
 <p align="center">
-  <img src ="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/UnityProject.PNG" width="300" height="auto" />
+  <img src ="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/UnityProject.PNG" width="300" height="300" />
   <img src ="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/blackjack3.PNG" width="300" height="auto" />
   <img src ="https://github.com/CzrPlusPlus/Unity-Blackjack/blob/main/screenshots/blackjack4.PNG" width="300" height="auto" />
 </p>
