@@ -17,4 +17,8 @@ All of the UI elements & prefab instantiating are done using *world coordinates*
 Need to utilize Canvas better and use Rect Transform, Anchors, and Pivots. The game is pretty much designed exclusively for 16:9 1920x1080 display.
 
 ## Assets used
-...
+- Cloud Background Images: Craftpix.net
+- Background Music: LudoLoon Studio
+- GUI Elements (buttons): Giniel Villacote (Unity Asset Store), OArielG (Unity Asset Store)
+- Fonts: Tiny Worlds (Unity Asset Store), YukiPixels (https://www.artstation.com/yukipixels)
+- Card Sprites: Beavy Store (Unity Asset Store)
